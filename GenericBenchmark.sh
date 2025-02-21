@@ -164,9 +164,18 @@ echo "Starting nvidia-smi with progress..."
         printf "%s[id:%s    %s   vRAM: %4d / %5d (%.2f%%)   GPU_util: %3s%%   Power: %3.0f / %3.0f W   perf_state: %s\n", cstart, $1, $2, $3, $4, vram_percent, $5, $6, $7, $8
         printf "GPUtemp: %3s°C   Fan: %3s%%   HW-throttle: %-10s   SW-throttle: %-10s] -- CPU_util: %2s%%   RAM: %5s / %5sMiB\nMAXTarget: 84°C   GPU T.Limit Temp 83°C   Current Clock %4s / %4s MHz   Progress: %s%s\n\n", $9, $10, hw_throttle, sw_throttle, cpu, ram_used, ram_total, $13, $14, prog, cend
     }'
+
+    # Check if Nosana job has completed
+    if ! ps -p $NOSANA_PID > /dev/null; then
+        echo "Nosana job completed. Stopping nvidia-smi and logs..."
+        cleanup
+        break  # Exit the loop
+    fi
+
     sleep 5
 done) &
 NVIDIA_PID=$!
 
-# Wait for all background processes to complete
-wait $NOSANA_PID $NVIDIA_PID $LOGS_PID
+# Wait for Nosana job to complete, then cleanup
+wait $NOSANA_PID
+cleanup
