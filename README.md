@@ -14,4 +14,5 @@ if the script complains that nodejs is not installed then run this script and it
 
 ![screenshot](bench1.png)
 .
+.
 ![screenshot](bench2.png)
