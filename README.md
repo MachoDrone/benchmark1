@@ -13,4 +13,5 @@ if the script complains that nodejs is not installed then run this script and it
 ```sudo apt install nodejs npm -y && wget -qO- https://raw.githubusercontent.com/MachoDrone/benchmark1/main/GenericBenchmark.sh | bash```
 
 https://github.com/MachoDrone
-![screenshot](z1-Throttle.png)
+![screenshot](bench1.png)
+![screenshot](bench2.png)
