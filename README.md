@@ -12,6 +12,5 @@ This is a simple one-step command to run the full generic benchmarks. It takes a
 if the script complains that nodejs is not installed then run this script and it will install/update nodejs:
 ```sudo apt install nodejs npm -y && wget -qO- https://raw.githubusercontent.com/MachoDrone/benchmark1/main/GenericBenchmark.sh | bash```
 
-https://github.com/MachoDrone
 ![screenshot](bench1.png)
 ![screenshot](bench2.png)
